@@ -19,12 +19,21 @@ addNinja = (ninja) => {
     ninjas: ninjas
   })
 }
+
+deleteNinja = (id) => {
+  let ninjas = this.state.ninjas.filter(ninja => {
+    return ninja.id !== id
+  })
+  this.setState({
+    ninjas: ninjas
+  })
+}
   render() {
     return (
       <div className="App">
         <h1>My First React app!</h1>
         <p>Welcome to the shadow realm</p>
-        <Ninjas ninjas={this.state.ninjas}/>
+        <Ninjas deleteNinja={this.deleteNinja} ninjas={this.state.ninjas}/>
         <AddNinja addNinja={this.addNinja}/>
       </div>
     );
